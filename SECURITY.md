@@ -14,7 +14,7 @@ The following table outlines the security update support status for versions of 
 **Please do not report security vulnerabilities through public GitHub issues, pull requests, or public discussions.**
 If you believe you have discovered a security vulnerability in ECLYPSA AI, please report it privately through one of the following methods:
 1. **GitHub Private Vulnerability Reporting:** Navigate to the **Security** tab of the repository, select **Report a vulnerability**, and submit your report directly to the maintainers.
-2. **Email Disclosure:** Send an email detailing your findings to **security@nexaracademy.com**.
+2. **Email Disclosure:** Send an email detailing your findings to **mkfih3r.b@gmail.com**.
 ### What to Include in Your Report
 To help us evaluate and address the issue efficiently, please include:
 - A descriptive title and summary of the vulnerability.
