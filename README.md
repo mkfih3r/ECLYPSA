@@ -15,3 +15,13 @@ Include:
 
 Generate only README.md.
 Do not generate any other file.
+
+## Documentation
+
+docs/
+ ├── architecture
+ ├── development
+ ├── project
+ ├── ai
+ ├── plugins
+ └── tutorials
