@@ -1,157 +1,103 @@
-# Contributing to ECLYPSA AI
+# Security Policy
 
-Thank you for your interest in contributing to ECLYPSA AI.
+Thank you for helping keep ECLYPSA AI secure.
 
-We welcome contributions from developers, researchers, designers, technical writers, students, and open-source enthusiasts.
-
-Every contribution helps improve the project.
+We take security seriously and appreciate responsible disclosure from the security community.
 
 ---
 
-# Code of Conduct
+# Supported Versions
 
-By participating in this project, you agree to follow our Code of Conduct.
-
-Please be respectful, constructive, and collaborative.
-
----
-
-# Ways to Contribute
-
-You can contribute by:
-
-- Reporting bugs
-- Suggesting new features
-- Improving documentation
-- Fixing bugs
-- Writing tests
-- Improving performance
-- Developing plugins
-- Reviewing pull requests
-- Helping other community members
+| Version | Supported |
+|----------|-----------|
+| v0.0.1-alpha | ✅ Yes |
 
 ---
 
-# Development Workflow
+# Reporting a Vulnerability
 
-1. Fork the repository.
+If you discover a security vulnerability, please do not disclose it publicly before reporting it to the project maintainers.
 
-2. Clone your fork.
+Please include the following information:
 
-```bash
-git clone https://github.com/YOUR_USERNAME/ECLYPSA.git
-```
-
-3. Create a feature branch.
-
-```bash
-git checkout -b feature/my-feature
-```
-
-4. Make your changes.
-
-5. Commit your work.
-
-```bash
-git commit -m "feat: add new feature"
-```
-
-6. Push your branch.
-
-```bash
-git push origin feature/my-feature
-```
-
-7. Open a Pull Request.
+- Vulnerability description
+- Affected component
+- Steps to reproduce
+- Potential impact
+- Proof of Concept (if applicable)
+- Suggested remediation (optional)
 
 ---
 
-# Commit Message Convention
+# Responsible Disclosure
 
-Use clear commit messages.
+Please:
 
-Examples
-
-```text
-feat: add plugin manager
-
-fix: resolve startup issue
-
-docs: improve README
-
-test: add unit tests
-
-refactor: simplify API routing
-
-chore: update dependencies
-```
+- Give maintainers reasonable time to investigate and fix the issue.
+- Avoid public disclosure until a fix is available.
+- Report vulnerabilities in good faith.
+- Do not access or modify data that you do not own.
+- Avoid actions that could disrupt the availability of the project or its users.
 
 ---
 
-# Pull Request Checklist
+# Scope
 
-Before submitting a Pull Request, please ensure:
+This policy applies to:
 
-- Code builds successfully.
-- Tests pass.
-- Documentation is updated.
-- No unnecessary files are included.
-- Commit messages follow the convention.
-
----
-
-# Reporting Bugs
-
-Please include:
-
-- Operating System
-- Python Version
-- Steps to Reproduce
-- Expected Behaviour
-- Actual Behaviour
-- Screenshots (if applicable)
+- Source Code
+- Documentation
+- API
+- CLI
+- SDK
+- Plugins
+- GitHub Workflows
 
 ---
 
-# Feature Requests
+# Out of Scope
 
-When requesting a new feature, describe:
+The following are generally considered out of scope:
 
-- The problem
-- Your proposed solution
-- Possible alternatives
-- Additional context
-
----
-
-# Coding Style
-
-Please follow:
-
-- Clean Code principles
-- Meaningful variable names
-- Consistent formatting
-- Small reusable functions
-- Proper documentation
+- Spam
+- Social Engineering
+- Denial of Service (DoS) testing
+- Physical attacks
+- Vulnerabilities in third-party services not maintained by this project
 
 ---
 
-# Documentation
+# Security Best Practices
 
-Good documentation is just as valuable as good code.
+Contributors are encouraged to:
 
-Documentation improvements are always welcome.
-
----
-
-# Questions
-
-If you have any questions, please open a GitHub Discussion or Issue.
+- Keep dependencies updated.
+- Avoid committing secrets.
+- Use strong authentication.
+- Review code before merging.
+- Follow secure coding practices.
 
 ---
 
-# Thank You
+# Disclosure Process
 
-Thank you for helping make ECLYPSA AI better for everyone.
+1. Report the issue privately.
+2. Security team validates the report.
+3. A fix is developed.
+4. The fix is tested.
+5. A security release is published.
+6. Public disclosure may follow after users have had time to update.
 
-Happy Coding!
+---
+
+# Hall of Thanks
+
+We appreciate everyone who responsibly reports security issues and helps improve ECLYPSA AI.
+
+---
+
+# Contact
+
+For security-related concerns, please use GitHub Security Advisories (when enabled) or contact the project maintainers through the repository's official communication channels.
+
+Thank you for helping make ECLYPSA AI more secure.
