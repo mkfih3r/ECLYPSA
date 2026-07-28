@@ -187,6 +187,16 @@ Contributions are welcome! Please follow these steps:
  4. Push to the branch (git push origin feature/AmazingFeature).
  5. Open a Pull Request.
 Please refer to CODE_OF_CONDUCT.md and CONTRIBUTING.md for detailed guidelines.
+
+## 💖 Sponsor / Donations
+If you find **ECLYPSA AI** useful and want to support its development, you can sponsor via **Binance Crypto / Binance Pay**:
+
+| Network / Method | Address / ID |
+| :--- | :--- |
+| **Binance Pay ID** | `560787034` |
+| **USDT (TRC20)** | `https://s.binance.com/tXn3ZHoP` |
+| **USDT / BNB (BEP20)** | `(Tap this link to pay.)``https://s.binance.com/VccRXB21` |
+
 ## 📄 License
 Distributed under the **MIT License**. See LICENSE for more information.
 <div align="center">
