@@ -1,4 +1,7 @@
 <div align="center">
+<img src="assets/eclypsa-banner.png" alt="ECLYPSA AI Banner" width="100%">
+    
+<br/>
 
 # 🛡️ ECLYPSA AI
 
