@@ -188,7 +188,7 @@ The project directory structure is organized as follows:
 ### Method 1: Building from Source
 ```bash
 # Clone the repository
-git clone https://github.com/eclypsa/eclypsa.git
+git clone https://github.com/mkfih3r/eclypsa/eclypsa.git
 cd eclypsa
 # Run the foundation setup script
 ./scripts/setup.sh
@@ -350,7 +350,7 @@ Comprehensive documentation resides in the docs/ folder:
 To set up your local development environment for contributing:
 ```bash
 # 1. Fork and clone repository
-git clone https://github.com/YOUR_USERNAME/eclypsa.git
+git clone https://github.com/mkfih3r/eclypsa.git
 cd eclypsa
 # 2. Setup dev dependencies
 make dev-setup
