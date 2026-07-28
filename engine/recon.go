@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net"
 	"os"
@@ -8,11 +9,12 @@ import (
 	"time"
 )
 
-// ScanResult holds the outcome of a port scan and banner grab
+// ScanResult holds the outcome of a port scan for JSON output
 type ScanResult struct {
-	Port   int
-	IsOpen bool
-	Banner string
+	Target string `json:"target"`
+	Port   int    `json:"port"`
+	Open   bool   `json:"open"`
+	Banner string `json:"banner,omitempty"`
 }
 
 // scanPort attempts a TCP connection to the target host and port
@@ -22,20 +24,25 @@ func scanPort(host string, port int, timeout time.Duration, wg *sync.WaitGroup, 
 	address := fmt.Sprintf("%s:%d", host, port)
 	conn, err := net.DialTimeout("tcp", address, timeout)
 	if err != nil {
-		results <- ScanResult{Port: port, IsOpen: false}
+		results <- ScanResult{
+			Target: host,
+			Port:   port,
+			Open:   false,
+		}
 		return
 	}
 	defer conn.Close()
 
-	// Set a short read deadline for banner grabbing
+	// Read banner if available
 	conn.SetReadDeadline(time.Now().Add(1 * time.Second))
-	buffer := make([]byte, 512)
+	buffer := make([]byte, 256)
 	n, _ := conn.Read(buffer)
 	banner := string(buffer[:n])
 
 	results <- ScanResult{
+		Target: host,
 		Port:   port,
-		IsOpen: true,
+		Open:   true,
 		Banner: banner,
 	}
 }
@@ -47,12 +54,8 @@ func main() {
 	}
 
 	targetHost := os.Args[1]
-	timeout := 2 * time.Second
+	timeout := 1500 * time.Millisecond
 	commonPorts := []int{21, 22, 25, 53, 80, 110, 143, 443, 445, 8080, 8443}
-
-	fmt.Println("[+] Initializing ECLYPSA Native Recon Engine")
-	fmt.Printf("[+] Target: %s\n", targetHost)
-	fmt.Printf("[+] Scanning %d default ports...\n\n", len(commonPorts))
 
 	var wg sync.WaitGroup
 	results := make(chan ScanResult, len(commonPorts))
@@ -62,23 +65,25 @@ func main() {
 		go scanPort(targetHost, port, timeout, &wg, results)
 	}
 
-	// Close channel once all goroutines complete
+	// Wait for scans in background and close channel
 	go func() {
 		wg.Wait()
 		close(results)
 	}()
 
-	openPorts := 0
+	openPorts := []ScanResult{}
 	for res := range results {
-		if res.IsOpen {
-			openPorts++
-			if len(res.Banner) > 0 {
-				fmt.Printf("[OPEN] Port %d - Banner: %s\n", res.Port, res.Banner)
-			} else {
-				fmt.Printf("[OPEN] Port %d\n", res.Port)
-			}
+		if res.Open {
+			openPorts = append(openPorts, res)
 		}
 	}
 
-	fmt.Printf("\n[+] Recon scan completed. Found %d open ports.\n", openPorts)
+	// Output clean JSON format expected by Python tests and plugins
+	outputJSON, err := json.MarshalIndent(openPorts, "", "  ")
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error marshaling JSON: %v\n", err)
+		os.Exit(1)
+	}
+
+	fmt.Println(string(outputJSON))
 }
