@@ -15,6 +15,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+# Changelog
+
+All notable changes to the **ECLYPSA AI** project will be documented in this file.
+
+## [v0.0.1-alpha] - 2026-07-29
+
+### Added
+- **Core Engine & Lifecycle:** Initialized Python-based micro-modular framework with dynamic config loading.
+- **ReAct Agent Loop:** Autonomous reasoning-and-acting engine integrating Ollama (local) and OpenAI models.
+- **Native Go Engine:** Multithreaded TCP port scanner and high-speed network banner grabber.
+- **Skill Plugins:**
+  - `recon_intel`: Passive OSINT subdomain enumerator (crt.sh) and raw socket banner grabber.
+  - `web_analyzer`: HTTP Security Headers and SSL/TLS configuration auditor.
+- **API & Control Center:** Embedded REST API gateway with static web dashboard support.
+- **Deployment & Infra:** Multi-stage `Dockerfile`, `docker-compose.yml` for isolated container orchestration, and Makefile.
+
 ## [1.0.0] - 2026-07-25
 
 ### Added
