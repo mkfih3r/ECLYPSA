@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"net"
 	"os"
@@ -9,52 +8,77 @@ import (
 	"time"
 )
 
+// ScanResult holds the outcome of a port scan and banner grab
 type ScanResult struct {
-	Target string `json:"target"`
-	Port   int    `json:"port"`
-	Open   bool   `json:"open"`
+	Port   int
+	IsOpen bool
+	Banner string
 }
 
-func scanPort(target str, port int, wg *sync.WaitGroup, results chan<- ScanResult) {
+// scanPort attempts a TCP connection to the target host and port
+func scanPort(host string, port int, timeout time.Duration, wg *sync.WaitGroup, results chan<- ScanResult) {
 	defer wg.Done()
-	address := fmt.Sprintf("%s:%d", target, port)
-	conn, err := net.DialTimeout("tcp", address, 1500*time.Millisecond)
 
+	address := fmt.Sprintf("%s:%d", host, port)
+	conn, err := net.DialTimeout("tcp", address, timeout)
 	if err != nil {
-		results <- ScanResult{Target: target, Port: port, Open: false}
+		results <- ScanResult{Port: port, IsOpen: false}
 		return
 	}
-	conn.Close()
-	results <- ScanResult{Target: target, Port: port, Open: true}
+	defer conn.Close()
+
+	// Set a short read deadline for banner grabbing
+	conn.SetReadDeadline(time.Now().Add(1 * time.Second))
+	buffer := make([]byte, 512)
+	n, _ := conn.Read(buffer)
+	banner := string(buffer[:n])
+
+	results <- ScanResult{
+		Port:   port,
+		IsOpen: true,
+		Banner: banner,
+	}
 }
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println(`{"error": "Target host argument required"}`)
+		fmt.Println("Usage: recon <target_host>")
 		os.Exit(1)
 	}
 
-	target := os.Args[1]
-	ports := []int{21, 22, 80, 443, 8080, 8443, 3306, 5432}
+	targetHost := os.Args[1]
+	timeout := 2 * time.Second
+	commonPorts := []int{21, 22, 25, 53, 80, 110, 143, 443, 445, 8080, 8443}
+
+	fmt.Println("[+] Initializing ECLYPSA Native Recon Engine")
+	fmt.Printf("[+] Target: %s\n", targetHost)
+	fmt.Printf("[+] Scanning %d default ports...\n\n", len(commonPorts))
 
 	var wg sync.WaitGroup
-	resultsChan := make(chan ScanResult, len(ports))
+	results := make(chan ScanResult, len(commonPorts))
 
-	for _, port := range ports {
+	for _, port := range commonPorts {
 		wg.Add(1)
-		go scanPort(target, port, &wg, resultsChan)
+		go scanPort(targetHost, port, timeout, &wg, results)
 	}
 
-	wg.Wait()
-	close(resultsChan)
+	// Close channel once all goroutines complete
+	go func() {
+		wg.Wait()
+		close(results)
+	}()
 
-	var openPorts []ScanResult
-	for res := range resultsChan {
-		if res.Open {
-			openPorts = append(openPorts, res)
+	openPorts := 0
+	for res := range results {
+		if res.IsOpen {
+			openPorts++
+			if len(res.Banner) > 0 {
+				fmt.Printf("[OPEN] Port %d - Banner: %s\n", res.Port, res.Banner)
+			} else {
+				fmt.Printf("[OPEN] Port %d\n", res.Port)
+			}
 		}
 	}
 
-	output, _ := json.Marshal(openPorts)
-	fmt.Println(string(output))
+	fmt.Printf("\n[+] Recon scan completed. Found %d open ports.\n", openPorts)
 }
