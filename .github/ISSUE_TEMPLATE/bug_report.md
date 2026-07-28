@@ -1,9 +1,10 @@
 ---
 name: Bug Report
 about: Create a report to help us improve ECLYPSA AI
-title: '[BUG] '
-labels: 'bug, needs-triage'
+title: "[BUG] "
+labels: bug
 assignees: ''
+
 ---
 
 ## Bug Description
