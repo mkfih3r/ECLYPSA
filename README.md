@@ -1,21 +1,12 @@
-```markdown
 <div align="center">
 
 # 🛡️ ECLYPSA AI
 
 **Autonomous, Privacy-First & High-Performance AI Platform for Security & Automation**
 
-[![Version](https://img.shields.io/badge/version-v0.0.1--alpha-blue.svg)](https://github.com/eclypsa-ai/eclypsa-ai/releases)
-[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
-[![Go](https://img.shields.io/badge/Go-1.22+-00ADD8?style=flat&logo=go&logoColor=white)](https://golang.org/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-v0.0.1--alpha-blue.svg)](https://github.com/eclypsa-ai/eclypsa-ai/releases) [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/) [![Go](https://img.shields.io/badge/Go-1.22+-00ADD8?style=flat&logo=go&logoColor=white)](https://golang.org/) [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat&logo=docker&logoColor=white)](https://www.docker.com/) [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-[Architecture](#-system-architecture) •
-[Quick Start](#-quick-start) •
-[Docker Deployment](#-docker-deployment) •
-[Plugin Development](#-developing-plugins) •
-[Contributing](#-contributing)
+[Architecture](#-system-architecture) • [Quick Start](#-quick-start) • [Docker Deployment](#-docker-deployment) • [Plugin Development](#-developing-plugins) • [Contributing](#-contributing)
 
 </div>
 
@@ -42,34 +33,19 @@ Designed to operate seamlessly on-premises with local models (**Ollama / Llama 3
 
 ## 🏗️ System Architecture
 
-
-```
-┌──────────────────────────────┐
-│     ECLYPSA Control Center   │
-│   (Web Dashboard / CLI)      │
-└──────────────┬───────────────┘
-│ REST / CLI
-▼
-┌─────────────────────────────────────────────────────────────────────────────────────────┐
-│ ECLYPSA CORE ENGINE                                                                    │
-│                                                                                         │
-│   ┌────────────────────────┐        ┌───────────────────────┐        ┌──────────────┐   │
-│   │  API Server / Gateway  │◄──────►│   ReAct Agent Loop    │◄──────►│ Config / Env │   │
-│   └────────────────────────┘        └───────────┬───────────┘        └──────────────┘   │
-│                                                 │                                       │
-│                                                 ▼                                       │
-│                                     ┌───────────────────────┐                           │
-│                                     │ Agent / Plugin Bridge │                           │
-│                                     └───────────┬───────────┘                           │
-└─────────────────────────────────────────────────┼───────────────────────────────────────┘
-│ Dynamic Execution
-┌───────────────────────┴───────────────────────┐
-▼                                               ▼
-┌─────────────────────────────────┐             ┌────────────────────────────────┐
-│     Security Skills & Plugins   │             │       Universal LLM Backends   │
-│  (Go Native Engine / Python)    │             │   (Ollama / OpenAI / Groq)     │
-└─────────────────────────────────┘             └────────────────────────────────┘
-```
+```mermaid
+flowchart TD
+    A[ECLYPSA Control Center<br/>Web Dashboard / CLI] -->|REST / CLI| B[ECLYPSA Core Engine]
+    
+    subgraph Core Engine Subsystem
+        B --> C[API Gateway]
+        B --> D[ReAct Agent Loop]
+        B --> E[Config / Env Manager]
+    end
+    
+    D --> F[Agent / Plugin Bridge]
+    F --> G[Security Skills & Plugins <br/> Go Native Engine / Python]
+    F --> H[Universal LLM Backends <br/> Ollama / OpenAI / Groq]
 
 ---
 
@@ -157,7 +133,6 @@ Navigate to http://localhost:8080 in your browser to access the **ECLYPSA Operat
 ## 🐳 Docker Deployment
 The fastest way to deploy ECLYPSA AI along with a fully local Ollama LLM container is using docker-compose:
 ```bash
-
 # Build and spin up containers
 docker-compose up --build -d
 
@@ -190,7 +165,6 @@ class CustomScannerPlugin(BasePlugin):
 
 ```
 The AgentPluginBridge will automatically discover and register your plugin as an executable tool for the ReAct Agent on startup!
-
 ## 🧪 Testing
 Run the full unit test suite using unittest or the included Makefile:
 ```bash
@@ -209,7 +183,6 @@ Contributions are welcome! Please follow these steps:
  4. Push to the branch (git push origin feature/AmazingFeature).
  5. Open a Pull Request.
 Please refer to CODE_OF_CONDUCT.md and CONTRIBUTING.md for detailed guidelines.
-
 ## 📄 License
 Distributed under the **MIT License**. See LICENSE for more information.
 <div align="center">
