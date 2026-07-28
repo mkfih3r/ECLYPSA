@@ -44,14 +44,15 @@ flowchart TD
     end
     
     D --> F[Agent / Plugin Bridge]
-    F --> G[Security Skills & Plugins <br/> Go Native Engine / Python]
-    F --> H[Universal LLM Backends <br/> Ollama / OpenAI / Groq]
+    F --> G[Security Skills & Plugins<br/>Go Native Engine / Python]
+    F --> H[Universal LLM Backends<br/>Ollama / OpenAI / Groq]
 
----
+```
 
 ## 📁 Repository Structure
 
 ```text
+
 eclypsa-ai/
 ├── agent/                  # Agent Framework (ReAct Engine, LLM Providers, Bridge)
 │   ├── bridge.py           # Maps dynamic plugins to executable agent tools
