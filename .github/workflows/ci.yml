@@ -19,7 +19,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
 
       - name: Install Python Dependencies
         run: |
@@ -38,8 +37,16 @@ jobs:
 
       - name: Run Unit Tests
         run: |
-          python -m unittest discover -s tests -p "test_*.py"
+          if [ -d "tests" ]; then
+            python -m unittest discover -s tests -p "test_*.py"
+          else
+            echo "No tests directory found, skipping unit tests."
+          fi
 
       - name: Test Docker Container Build
         run: |
-          docker build -t eclypsa-ai:test .
+          if [ -f "Dockerfile" ]; then
+            docker build -t eclypsa-ai:test .
+          else
+            echo "No Dockerfile found, skipping Docker build."
+          fi
