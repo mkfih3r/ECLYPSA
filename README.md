@@ -1,91 +1,79 @@
-```markdown
-<!-- ECLYPSA AI Hero Banner -->
-<p align="center">
-  <img src="assets/eclypsa-banner.png" alt="ECLYPSA AI Hero Banner" width="100%" />
-</p>
-<p align="center">
-  <a href="https://github.com/eclypsa/eclypsa/releases"><img src="https://img.shields.io/github/v/release/eclypsa/eclypsa?include_prereleases&style=for-the-badge&color=0070f3" alt="Version"></a>
-  <a href="https://github.com/eclypsa/eclypsa/blob/main/LICENSE"><img src="https://img.shields.io/github/license/eclypsa/eclypsa?style=for-the-badge&color=green" alt="License"></a>
-  <a href="https://github.com/eclypsa/eclypsa/actions"><img src="https://img.shields.io/github/actions/workflow/status/eclypsa/eclypsa/ci.yml?branch=main&style=for-the-badge&label=CI" alt="Build Status"></a>
-  <a href="https://github.com/eclypsa/eclypsa/issues"><img src="https://img.shields.io/github/issues/eclypsa/eclypsa?style=for-the-badge&color=orange" alt="Issues"></a>
-  <a href="https://discord.gg/eclypsa"><img src="https://img.shields.io/discord/1234567890?style=for-the-badge&logo=discord&color=7289da" alt="Discord Community"></a>
-</p>
----
+এখানে ECLYPSA AI-এর সম্পূর্ণ **README.md** ফাইলটি দেওয়া হলো। কোনো বাইরের কোড ব্লক বা HTML ট্যাগের জটিলতা ছাড়া এটি সরাসরি GitHub-এ ব্যবহারের জন্য একদম প্রস্তুত।
+Version
+License
+Build Status
+Issues
+Discord Community
 # ECLYPSA AI
 > **A modular, privacy-first, developer-friendly artificial intelligence engine and open platform.**
+> 
 ECLYPSA AI is an open-source artificial intelligence foundation designed to serve as an extensible engine for local-first inference, autonomous agent orchestration, cross-platform client integration, and enterprise-grade privacy controls. Built from the ground up to respect user data ownership, ECLYPSA AI decouples inference mechanics from client applications to provide a consistent, robust runtime environment across edge, desktop, mobile, and server environments.
----
 ## Vision
 To democratize artificial intelligence by delivering an open, modular ecosystem where users maintain absolute ownership over their data, models, and workflows without sacrificing enterprise performance or developer ergonomics.
 ## Mission
 To construct a universal, modular runtime and SDK layer that enables developers to build, deploy, and scale privacy-preserving AI applications across any hardware infrastructure—from resource-constrained personal devices to distributed cloud environments.
----
 ## Core Principles
-* **🔒 Privacy by Design:** Data never leaves the local environment unless explicitly configured by the operator.
-* **🧩 Modular Architecture:** Every core subsystem—from model loaders to transport layers—is pluggable and extensible.
-* **⚡ Developer Ergonomics:** Clean APIs, comprehensive SDKs, and predictable CLI interfaces engineered for developer productivity.
-* **🌐 Hardware Agnostic:** Seamless operational support spanning CPU, GPU, and specialized edge accelerators.
-* **📖 Open Governance:** Driven by transparent community collaboration and strict open-source licensing.
----
+ * **🔒 Privacy by Design:** Data never leaves the local environment unless explicitly configured by the operator.
+ * **🧩 Modular Architecture:** Every core subsystem—from model loaders to transport layers—is pluggable and extensible.
+ * **⚡ Developer Ergonomics:** Clean APIs, comprehensive SDKs, and predictable CLI interfaces engineered for developer productivity.
+ * **🌐 Hardware Agnostic:** Seamless operational support spanning CPU, GPU, and specialized edge accelerators.
+ * **📖 Open Governance:** Driven by transparent community collaboration and strict open-source licensing.
 ## Current Project Status
 > [!IMPORTANT]
-> **Stage:** Foundation (`v0.0.1-alpha`)  
+> **Stage:** Foundation (v0.0.1-alpha)
 > ECLYPSA AI is currently in its early structural foundation phase. The repository contains the core architectural skeleton, early engine abstractions, and setup scripts. Subsystems marked as **Under Development** or **Planned** are actively undergoing engineering work and should not be used in production environments.
----
+> 
 ## Development Philosophy
 ECLYPSA AI follows strict engineering practices rooted in systems reliability, explicit boundaries, and zero hidden magic:
-1. **Explicit Architecture over Implicit Magic:** Interfaces are clearly typed and bounded to ensure predictable execution.
-2. **Minimal External Dependencies:** Core functionality prioritizes lean, audited standard libraries and minimal third-party supply chain exposure.
-3. **Strict Versioning and Contract Stability:** Public APIs adhere strictly to Semantic Versioning (`SemVer`).
-4. **Test-Driven Rigor:** Foundation code requires comprehensive unit and integration test coverage prior to release candidate staging.
----
+ 1. **Explicit Architecture over Implicit Magic:** Interfaces are clearly typed and bounded to ensure predictable execution.
+ 2. **Minimal External Dependencies:** Core functionality prioritizes lean, audited standard libraries and minimal third-party supply chain exposure.
+ 3. **Strict Versioning and Contract Stability:** Public APIs adhere strictly to Semantic Versioning (SemVer).
+ 4. **Test-Driven Rigor:** Foundation code requires comprehensive unit and integration test coverage prior to release candidate staging.
 ## Table of Contents
-- [Vision](#vision)
-- [Mission](#mission)
-- [Core Principles](#core-principles)
-- [Current Project Status](#current-project-status)
-- [Development Philosophy](#development-philosophy)
-- [Project Goals](#project-goals)
-- [Why ECLYPSA AI?](#why-eclypsa-ai)
-- [Features](#features)
-- [Architecture Overview](#architecture-overview)
-- [ASCII Architecture Diagram](#ascii-architecture-diagram)
-- [Repository Structure](#repository-structure)
-- [Technology Stack](#technology-stack)
-- [System Requirements](#system-requirements)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Configuration](#configuration)
-- [Environment Variables](#environment-variables)
-- [Usage](#usage)
-- [CLI](#cli)
-- [API](#api)
-- [Plugin System](#plugin-system)
-- [SDK](#sdk)
-- [Documentation Index](#documentation-index)
-- [Development Workflow](#development-workflow)
-- [Branch Strategy](#branch-strategy)
-- [Commit Convention](#commit-convention)
-- [Versioning](#versioning)
-- [Roadmap](#roadmap)
-- [Testing](#testing)
-- [Security](#security)
-- [Contributing](#contributing)
-- [Code of Conduct](#code-of-conduct)
-- [FAQ](#faq)
-- [Known Limitations](#known-limitations)
-- [Future Plans](#future-plans)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
-- [Support](#support)
-- [Contact](#contact)
----
+ * Vision
+ * Mission
+ * Core Principles
+ * Current Project Status
+ * Development Philosophy
+ * Project Goals
+ * Why ECLYPSA AI?
+ * Features
+ * Architecture Overview
+ * ASCII Architecture Diagram
+ * Repository Structure
+ * Technology Stack
+ * System Requirements
+ * Installation
+ * Quick Start
+ * Configuration
+ * Environment Variables
+ * Usage
+ * CLI
+ * API
+ * Plugin System
+ * SDK
+ * Documentation Index
+ * Development Workflow
+ * Branch Strategy
+ * Commit Convention
+ * Versioning
+ * Roadmap
+ * Testing
+ * Security
+ * Contributing
+ * Code of Conduct
+ * FAQ
+ * Known Limitations
+ * Future Plans
+ * Acknowledgements
+ * License
+ * Support
+ * Contact
 ## Project Goals
-1. **Unified Inference Runtime:** Standardize model execution across local GGUF/ONNX weights and remote provider APIs.
-2. **Modular Agent Orchestration:** Provide a light, deterministic execution frame for multi-step agent reasoning and tool usage.
-3. **Pluggable Middleware Architecture:** Allow developers to easily inject custom guardrails, memory providers, and loggers.
-4. **Cross-Platform Native Clients:** Deliver seamless integration across CLI, Web, Desktop (Electron/Tauri), and Mobile (Flutter/React Native).
----
+ 1. **Unified Inference Runtime:** Standardize model execution across local GGUF/ONNX weights and remote provider APIs.
+ 2. **Modular Agent Orchestration:** Provide a light, deterministic execution frame for multi-step agent reasoning and tool usage.
+ 3. **Pluggable Middleware Architecture:** Allow developers to easily inject custom guardrails, memory providers, and loggers.
+ 4. **Cross-Platform Native Clients:** Deliver seamless integration across CLI, Web, Desktop (Electron/Tauri), and Mobile (Flutter/React Native).
 ## Why ECLYPSA AI?
 
 | Feature / Goal | Vendor Cloud APIs | Monolithic Local Tools | ECLYPSA AI Framework |
@@ -94,66 +82,47 @@ ECLYPSA AI follows strict engineering practices rooted in systems reliability, e
 | **Architecture** | ❌ Proprietary SaaS | ❌ Monolithic | ✅ Fully Modular & Engine-Based |
 | **Extensibility** | ❌ Limited Hooking | ❌ Hardcoded Tools | ✅ Plugin & Driver Ecosystem |
 | **Cross-Platform** | ✅ REST/gRPC | ❌ Desktop/CLI Only | ✅ CLI, Desktop, Mobile, SDK |
-| **Agent Controls** | ❌ Opaque | ❌ Basic Loops | ✅ Deterministic Execution Pipeline |
-
----
-## Features
-Below is the status matrix for features within the `v0.0.1-alpha` foundation release:
-
+| **Agent Controls** | ❌ Opaque | ❌ Basic Loops | ✅ Deterministic Execution Pipeline | <br> ## Features <br> Below is the status matrix for features within the v0.0.1-alpha foundation release:
 | Subsystem | Feature Description | Status |
 | :--- | :--- | :--- |
 | **Core** | Modular Engine Initialization & Config Parser | ✅ Available |
 | **Core** | Driver Interface Abstractions (Inference, Storage, Transport) | ✅ Available |
-| **CLI** | Base Command Line Interface Setup (`eclypsa`) | ✅ Available |
+| **CLI** | Base Command Line Interface Setup (eclypsa) | ✅ Available |
 | **API** | REST API Routing & OpenAPI Schema Generator | 🚧 Under Development |
 | **API** | Real-time WebSocket / SSE Streaming Endpoints | 🚧 Under Development |
 | **Agent** | Single-step Task Execution Loop | 🚧 Under Development |
 | **Agent** | Multi-agent Collaborative Workflows | 🗺 Planned |
 | **Plugins** | Plugin Lifecycle Loader & Hook Registration | 🚧 Under Development |
-| **SDK** | Python Software Development Kit (`eclypsa-sdk`) | 🚧 Under Development |
+| **SDK** | Python Software Development Kit (eclypsa-sdk) | 🚧 Under Development |
 | **SDK** | TypeScript / Node.js SDK | 🗺 Planned |
 | **Desktop** | Cross-platform Tauri Client Shell | 🗺 Planned |
 | **Mobile** | Native Mobile Client Framework | 🗺 Planned |
-| **Security** | End-to-End Local Vector Store Encryption | 🗺 Planned |
-
----
-## Architecture Overview
-ECLYPSA AI is organized around a core execution engine (`core`) that decouples client user interfaces (`cli`, `desktop`, `mobile`) from model providers and agent logic (`agent`).
-* **Core Engine:** Manages lifecycle, configuration, pipeline registration, and thread execution.
-* **Transport & API Layer:** Exposes standard gRPC, REST, and WebSocket abstractions to external or local clients.
-* **Agent Core:** Handles memory, tool evaluation, context assembly, and step-based processing.
-* **Plugin Abstraction:** Provides strictly defined interfaces for custom vector stores, external tools, and model adapters.
----
-## ASCII Architecture Diagram
-```
-+-----------------------------------------------------------------------+
-|                            CLIENT LAYERS                              |
-|   +-----------------+   +------------------+   +------------------+   |
-|   |   CLI Client    |   |  Desktop Client  |   |  Mobile Client   |   |
-|   |    (cli/)     |   |   (desktop/)   |   |    (mobile/)   |   |
-|   +--------+--------+   +--------+---------+   +--------+---------+   |
-
-+------------ | --------------------- | ---------------------- | -------------+
+| **Security** | End-to-End Local Vector Store Encryption | 🗺 Planned | <br> ## Architecture Overview <br> ECLYPSA AI is organized around a core execution engine (core) that decouples client user interfaces (cli, desktop, mobile) from model providers and agent logic (agent). <br> * **Core Engine:** Manages lifecycle, configuration, pipeline registration, and thread execution. <br> * **Transport & API Layer:** Exposes standard gRPC, REST, and WebSocket abstractions to external or local clients. <br> * **Agent Core:** Handles memory, tool evaluation, context assembly, and step-based processing. <br> * **Plugin Abstraction:** Provides strictly defined interfaces for custom vector stores, external tools, and model adapters. <br> ## ASCII Architecture Diagram <br> ```text <br> +-----------------------------------------------------------------------+
+| CLIENT LAYERS |
+| +-----------------+   +------------------+   +------------------+ |
+|  | CLI Client |  | Desktop Client |  | Mobile Client |  |
+|  | (`cli/`) |  | (`desktop/`) |  | (`mobile/`) |  |
+| +--------+--------+   +--------+---------+   +--------+---------+ | <br> +------------|---------------------|----------------------|-------------+
 | :--- | :--- | <br> +------------------+  |  +-------------------+
 | :--- | :--- | <br> +-------------------------------v--v--v---------------------------------+
 | API & SDK LAYER |
-| +--------------------/ API Gateway (api/) -------------------+ |
+| +--------------------/ API Gateway (`api/`) \-------------------+ |
 |  | REST Endpoints | WebSocket / SSE Streams | gRPC Interfaces |  |
 | +---------------------------------------------------------------+ |
-| +--------------------/ SDK Layer (sdk/) ---------------------+ |
+| +--------------------/ SDK Layer (`sdk/`) \---------------------+ |
 |  | Python SDK | TypeScript SDK | Go Core Bindings |  |
 | +---------------------------------------------------------------+ | <br> +-----------------------------------|-----------------------------------+
 | <br> +-----------------------------------v-----------------------------------+
 | CORE AI ENGINE |
 | +-----------------------------------------------------------------+ |
-|  | ECLYPSA CORE (core/) |  |
+|  | ECLYPSA CORE (`core/`) |  |
 |  | +--------------------+  +-------------------+  +------------+ |  |
 |  |  | Pipeline Registry |  | Context Assembler |  | Event Bus |  |  |
 |  | +--------------------+  +-------------------+  +------------+ |  |
 | +-----------------------------------------------------------------+ |
 | :--- | :--- |
 | +--------------------------------v--------------------------------+ |
-|  | AGENT FRAMEWORK (agent/) |  |
+|  | AGENT FRAMEWORK (`agent/`) |  |
 |  | +--------------------+  +-------------------+  +------------+ |  |
 |  |  | Memory Controller |  | Tool Evaluator |  | Task Loop |  |  |
 |  | +--------------------+  +-------------------+  +------------+ |  |
@@ -161,7 +130,7 @@ ECLYPSA AI is organized around a core execution engine (`core`) that decouples c
 | <br> +-----------------------------------v-----------------------------------+
 | PLUGINS & EXTENSIONS |
 | +---------------------------------------------------------------+ |
-|  | Plugin System (plugins/) |  |
+|  | Plugin System (`plugins/`) |  |
 |  | +-------------------+  +------------------+  +------------+ |  |
 |  |  | Local Model Driver |  | Cloud Model API |  | Vector Store |  |  |
 |  | +-------------------+  +------------------+  +------------+ |  |
@@ -169,7 +138,6 @@ ECLYPSA AI is organized around a core execution engine (`core`) that decouples c
 
 +-----------------------------------------------------------------------+
 ```
----
 ## Repository Structure
 The project directory structure is organized as follows:
 ```text
@@ -220,7 +188,7 @@ The project directory structure is organized as follows:
 ### Method 1: Building from Source
 ```bash
 # Clone the repository
-git clone [https://github.com/eclypsa/eclypsa.git](https://github.com/eclypsa/eclypsa.git)
+git clone https://github.com/eclypsa/eclypsa.git
 cd eclypsa
 # Run the foundation setup script
 ./scripts/setup.sh
@@ -382,7 +350,7 @@ Comprehensive documentation resides in the docs/ folder:
 To set up your local development environment for contributing:
 ```bash
 # 1. Fork and clone repository
-git clone [https://github.com/YOUR_USERNAME/eclypsa.git](https://github.com/YOUR_USERNAME/eclypsa.git)
+git clone https://github.com/YOUR_USERNAME/eclypsa.git
 cd eclypsa
 # 2. Setup dev dependencies
 make dev-setup
@@ -445,36 +413,50 @@ make test-coverage
 ```
 ## Security
 Security is paramount to the ECLYPSA project.
+
 ### Reporting a Vulnerability
 Please **DO NOT** report security vulnerabilities through public GitHub issues.
 Instead, submit security reports directly to our team via email at security@eclypsa.org or through our confidential vulnerability advisory page on GitHub. We pledge to acknowledge reports within 24 hours and provide regular progress updates.
 For more details, see our full SECURITY.md policy.
+
 ## Contributing
 We welcome community contributions! Please review our guidelines before submitting a pull request:
  1. Read the CONTRIBUTING.md guide.
  2. Sign the Developer Certificate of Origin (DCO) on commits.
+
  3. Ensure all tests pass and code matches repo style guidelines.
+
 ## Code of Conduct
 ECLYPSA AI is committed to providing a welcoming, inclusive, and harassment-free environment for all contributors. Please review our CODE_OF_CONDUCT.md before interacting with the project.
+
 ## FAQ
 #### Q: Is ECLYPSA AI ready for production deployment?
+
 **A:** No. v0.0.1-alpha is a foundation release intended for contributors, architects, and early developers.
+
 #### Q: How does ECLYPSA AI differ from existing agent frameworks?
+
 **A:** ECLYPSA AI is designed as a local-first, engine-decoupled system offering native cross-platform support (CLI, Desktop, Mobile) through a unified client architecture rather than a Python-only script library.
+
 #### Q: Can I run ECLYPSA AI completely offline?
+
 **A:** Yes, local-first execution without external telemetry or remote cloud dependencies is a core design requirement.
+
 ## Known Limitations
  * **Alpha Release Constraints:** Public APIs are actively evolving and subject to non-backward-compatible updates prior to v0.1.0.
+
  * **Plugin Execution Sandbox:** Plugin isolation mechanisms are under active development; third-party plugins should currently be inspected prior to execution.
 ## Future Plans
  * Enterprise Multi-Node Agent Clustering.
  * Native Hardware Acceleration bindings for Apple Metal, Vulkan, and DirectML.
  * Fine-Grained Role-Based Access Control (RBAC) for Enterprise Deployments.
+
 ## Acknowledgements
 Special thanks to the open-source communities behind projects like Kubernetes, LangChain, Ollama, FastAPI, and Docker whose operational design standards inspired the ECLYPSA architecture.
 ## License
 ECLYPSA AI is released under the permissive MIT License.
 ```text
+
 MIT License
 Copyright (c) 2026 ECLYPSA AI Authors
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -483,19 +465,20 @@ in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
+
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 ```
 ## Support
  * **Documentation:** Read the guides in docs/.
+
  * **GitHub Issues:** Report verified bugs or submit request features via GitHub Issues.
+
  * **Discord Community:** Join our community for real-time discussions at discord.gg/eclypsa.
+
 ## Contact
  * **Project Lead:** ECLYPSA Core Team
  * **Email:** maintainers@eclypsa.org
- * **Website:** https://eclypsa.org
-<p align="center">
-<sub>Built with care by the ECLYPSA AI Open Source Community.</sub>
-</p>
-```
-```
+ * **Website:** [https://eclypsa.org](https://eclypsa.org)
+
+Built with care by the ECLYPSA AI Open Source Community.
