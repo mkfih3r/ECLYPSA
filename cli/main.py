@@ -1,74 +1,64 @@
 import argparse
 import sys
 import json
+import logging
 from core.engine import EclypsaEngine
+from plugins.loader import PluginLoader
+from agent.llm import OllamaProvider, OpenAIProvider
+from agent.react import ReActAgent
+from agent.bridge import AgentPluginBridge
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="ECLYPSA AI Core Command Line Interface"
-    )
-    
-    parser.add_argument(
-        "-v", "--version", 
-        action="store_true", 
-        help="Display version information"
-    )
-    
-    parser.add_argument(
-        "-c", "--config", 
-        type=str, 
-        help="Path to custom YAML configuration file"
-    )
+    parser = argparse.ArgumentParser(description="ECLYPSA AI CLI - Autonomous Intelligence Core")
+    subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
-    subparsers = parser.add_subparsers(dest="command", help="Available Commands")
+    # Health & Status Command
+    subparsers.add_parser("status", help="Check system health and core status")
 
-    # Command: init
-    subparsers.add_parser("init", help="Initialize local environment and configuration")
-
-    # Command: start
-    start_parser = subparsers.add_parser("start", help="Start the ECLYPSA core runtime engine")
-    start_parser.add_argument("--dry-run", action="store_true", help="Initialize and exit cleanly for health validation")
-
-    # Command: status
-    subparsers.add_parser("status", help="Display core engine health and subsystem status")
+    # Agent Execution Command
+    agent_parser = subparsers.add_parser("agent", help="Run autonomous agent tasks")
+    agent_parser.add_argument("--task", type=str, required=True, help="Task description for the agent")
+    agent_parser.add_argument("--provider", type=str, choices=["ollama", "openai"], default="ollama", help="LLM Provider")
+    agent_parser.add_argument("--model", type=str, default="llama3", help="Model name")
+    agent_parser.add_argument("--api-key", type=str, default="", help="API key for cloud provider")
 
     args = parser.parse_args()
 
-    # Create Engine Instance
-    engine = EclypsaEngine(config_path=args.config)
+    engine = EclypsaEngine()
+    engine.initialize()
 
-    if args.version:
-        print(f"ECLYPSA AI Engine Version: {engine.config['version']}")
-        sys.exit(0)
+    if args.command == "status":
+        print(json.dumps(engine.health_check(), indent=2))
 
-    if args.command == "init":
-        print("[+] Initializing ECLYPSA AI local configuration...")
-        print(f"[✓] Default configuration structure validated at: {engine.config_manager.config_path}")
-        sys.exit(0)
+    elif args.command == "agent":
+        print(f"[*] Initializing ECLYPSA AI Agent [Provider: {args.provider}]...")
 
-    elif args.command == "start":
-        engine.initialize()
-        if args.dry_run:
-            print("[✓] Dry run execution completed successfully.")
-            engine.shutdown()
+        # Setup Provider
+        if args.provider == "openai":
+            if not args.api_key:
+                print("[X] Error: --api-key is required for OpenAI provider.")
+                sys.exit(1)
+            provider = OpenAIProvider(api_key=args.api_key, model=args.model)
         else:
-            print("[+] Engine is running. Press CTRL+C to terminate.")
-            try:
-                # Keep process active
-                import time
-                while True:
-                    time.sleep(1)
-            except KeyboardInterrupt:
-                engine.shutdown()
+            provider = OllamaProvider(model=args.model)
 
-    elif args.command == "status":
-        engine.initialize()
-        status_info = engine.health_check()
-        print(json.dumps(status_info, indent=2))
-        engine.shutdown()
+        # Setup ReAct Agent & Plugin Bridge
+        react_agent = ReActAgent(llm_provider=provider)
+        plugin_loader = PluginLoader()
+        bridge = AgentPluginBridge(plugin_loader, react_agent)
+
+        registered_tools = bridge.sync_plugins_to_tools()
+        print(f"[+] Loaded {registered_tools} plugin tool(s) into agent arsenal.")
+
+        print(f"[*] Executing task: {args.task}\n" + "-"*50)
+        result = react_agent.run(task=args.task)
+        print("-" * 50)
+        print(f"[+] Agent Final Output:\n{result}")
 
     else:
         parser.print_help()
+
+    engine.shutdown()
 
 if __name__ == "__main__":
     main()
