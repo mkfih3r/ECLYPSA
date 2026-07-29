@@ -1,7 +1,7 @@
 import os
 import sys
+import subprocess
 
-# Path to our compiled Go recon binary
 RECON_BINARY = "./bin/recon"
 
 def check_environment():
@@ -10,12 +10,30 @@ def check_environment():
         print(f"[-] Error: Go recon binary not found at '{RECON_BINARY}'.")
         print("    Run: 'go build -o bin/recon engine/recon.go' first.")
         return False
-    
-    print(f"[+] Verified: Native Go binary found at '{RECON_BINARY}'")
     return True
 
+def execute_recon(target):
+    """Executes the Go recon binary against the target and captures STDOUT."""
+    print(f"[+] Launching recon scan against {target}...")
+    try:
+        # Runs the binary with target host as argument
+        result = subprocess.run(
+            [RECON_BINARY, target],
+            capture_output=True,  # Captures stdout and stderr
+            text=True,            # Converts byte output to Python string
+            check=True            # Raises error if process exits with error code
+        )
+        print("[+] Scan execution completed successfully!")
+        return result.stdout
+    except subprocess.CalledProcessError as e:
+        print(f"[-] Recon execution failed with code {e.returncode}")
+        print(f"[-] Error output: {e.stderr}")
+        return None
+    except Exception as e:
+        print(f"[-] Unexpected execution error: {e}")
+        return None
+
 if __name__ == "__main__":
-    # Check if target argument is provided
     if len(sys.argv) < 2:
         print("Usage: python modules/analyzer.py <target_host>")
         sys.exit(1)
@@ -24,4 +42,8 @@ if __name__ == "__main__":
     print(f"[+] Initializing ECLYPSA Analysis Module for target: {target_host}")
 
     if check_environment():
-        print("[+] Step 1 completed successfully!")
+        raw_output = execute_recon(target_host)
+        if raw_output:
+            print("\n[+] Raw output received from Go engine:")
+            print(raw_output)
+            print("[+] Step 2 completed successfully!")
