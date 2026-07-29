@@ -3,14 +3,13 @@ import sys
 import subprocess
 import argparse
 
-# Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 GO_ENGINE_SRC = os.path.join(BASE_DIR, "engine", "recon.go")
 BIN_DIR = os.path.join(BASE_DIR, "bin")
 RECON_BINARY = os.path.join(BIN_DIR, "recon")
 
-# Import analysis logic directly from our module
 from modules.analyzer import execute_recon, parse_recon_output, analyze_findings, generate_cli_report
+from modules.reporter import export_json, export_html
 
 def build_go_engine():
     """Checks if the Go recon binary exists; if not, builds it automatically."""
@@ -41,23 +40,28 @@ def main():
         required=True, 
         help="Target IP address or domain name to scan"
     )
+    parser.add_argument(
+        "--json", 
+        help="Path to save output as JSON report (e.g. output.json)"
+    )
+    parser.add_argument(
+        "--html", 
+        help="Path to save output as HTML report (e.g. output.html)"
+    )
 
     args = parser.parse_args()
     target = args.target
 
     print(f"[+] Initializing ECLYPSA AI Framework...")
 
-    # Auto-build engine if missing
     if not build_go_engine():
         sys.exit(1)
 
-    # Execute Recon Scan
     raw_output = execute_recon(target)
     if not raw_output:
         print("[-] Recon scan failed or returned no data.")
         sys.exit(1)
 
-    # Parse and Analyze Data
     parsed_data = parse_recon_output(raw_output)
     if parsed_data is None:
         print("[-] Failed to process scan results.")
@@ -65,8 +69,14 @@ def main():
 
     analysis = analyze_findings(parsed_data)
 
-    # Render Report
+    # Console Report
     generate_cli_report(target, analysis)
+
+    # Optional File Exports
+    if args.json:
+        export_json(analysis, args.json)
+    if args.html:
+        export_html(target, analysis, args.html)
 
 if __name__ == "__main__":
     main()
