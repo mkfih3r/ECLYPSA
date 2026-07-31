@@ -194,7 +194,7 @@ If you find **ECLYPSA AI** useful and want to support its development, you can s
 | Network / Method | Address / ID |
 | :--- | :--- |
 | **Binance Pay ID** | `560787034` |
-| **USDT (TRC20)** | `https://s.binance.com/tXn3ZHoP` |
+| **USDT (TRC20)** | `0x2f44EDC56d3c972F49015C0932c1b39A97cB2F7f` |
 | **USDT / BNB (BEP20)** | `(Tap this link to pay.)``0x2f44edc56d3c972f49015c0932c1b39a97cb2f7f` |
 
 ## 📄 License
